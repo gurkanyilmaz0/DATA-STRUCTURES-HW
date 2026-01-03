@@ -2,7 +2,7 @@
 
 #define KAPASITE 100 
 
-// 1. TRAVERSAL (Gezinme ve Yazd˝rma)
+// 1. TRAVERSAL (Gezinme ve Yazd√Ωrma)
 void printArray(int arr[], int size) {
     printf("Dizi (%d eleman): ", size);
     for (int i = 0; i < size; i++) {
@@ -14,7 +14,7 @@ void printArray(int arr[], int size) {
 // 2. ARAYA EKLEME (Insertion)
 
 void insertAt(int arr[], int *size, int index, int val) {
-    // Kapasite kontrol¸
+    // Kapasite kontrol√º/
     if (*size >= KAPASITE) {
         printf("Hata: Dizi dolu!\n");
         return;
@@ -37,7 +37,7 @@ void insertAt(int arr[], int *size, int index, int val) {
     (*size)++;
 }
 
-// 3. S›LME (Deletion)
+// 3. S√ùLME (Deletion)
 
 void deleteAt(int arr[], int *size, int index) {
     
@@ -61,13 +61,13 @@ int main() {
 
     printArray(arr, size); 
 
-    // ---> EKLEME TEST› <---
+    // ---> EKLEME TEST√ù <---
     
     printf("\n>> 2. indekse '99' ekleniyor...\n");
     insertAt(arr, &size, 2, 99);
     printArray(arr, size);
 
-    // ---> S›LME TEST› <---
+    // ---> S√ùLME TEST√ù <---
     
     printf("\n>> 0. indeks (Bas) siliniyor...\n");
     deleteAt(arr, &size, 0);
@@ -75,3 +75,4 @@ int main() {
 
     return 0;
 }
+
