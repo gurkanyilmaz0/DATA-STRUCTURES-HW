@@ -7,7 +7,7 @@ struct Node {
     struct Node* next;
 };
 
-// 1. TRAVERSAL (Gezinme)
+// 1. TRAVERSAL (Gezinme)/
 
 void printList(struct Node* head) {
     if (head == NULL) return;
@@ -18,7 +18,7 @@ void printList(struct Node* head) {
     do {
         printf("%d ", temp->data);
         temp = temp->next;
-    } while (temp != head); // Ba˛a dˆnene kadar devam et
+    } while (temp != head); // Ba√æa d√∂nene kadar devam et
     
     printf("(Basa dondu)\n");
 }
@@ -35,12 +35,12 @@ void insertAfter(struct Node* prev_node, int new_data) {
     prev_node->next = new_node;
 }
 
-// 3. S›LME (Biraz daha karma˛˝kt˝r)
+// 3. S√ùLME (Biraz daha karma√æ√Ωkt√Ωr)
 
 void deleteNode(struct Node** head_ref, struct Node* del) {
     if (*head_ref == NULL || del == NULL) return;
 
-    // Durum 1: Listede sadece tek d¸¸m var ve o silinecekse
+    // Durum 1: Listede sadece tek d√º√∞√ºm var ve o silinecekse
     if (*head_ref == del && (*head_ref)->next == *head_ref) {
         *head_ref = NULL;
         free(del);
@@ -66,7 +66,7 @@ void deleteNode(struct Node** head_ref, struct Node* del) {
 }
 
 int main() {
-    // ---> L›STEY› OLUﬁTURMA (Manuel) <---
+    // ---> L√ùSTEY√ù OLU√ûTURMA (Manuel) <---
     
     struct Node* head = (struct Node*)malloc(sizeof(struct Node));
     head->data = 10;
@@ -84,7 +84,7 @@ int main() {
     printf("Olusturulan ");
     printList(head); 
 	
-	   // ---> S›LME TEST› <---
+	   // ---> S√ùLME TEST√ù <---
     
     printf("Bas dugum (10) siliniyor...\n");
     deleteNode(&head, head);
@@ -93,3 +93,4 @@ int main() {
 
     return 0;
 }
+
