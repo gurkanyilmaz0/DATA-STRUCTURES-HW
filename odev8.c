@@ -2,14 +2,14 @@
 
 #define V 6 
 
-// ---> DFS ALGOR›TMASI <---
+// ---> DFS ALGOR√ùTMASI <----
 
 void DFS(int startNode, int visited[], int graph[][V]) {
-    // 1. ﬁu anki d¸¸m¸ ziyaret edildi olarak i˛aretle ve yazd˝r
+    // 1. √ûu anki d√º√∞√ºm√º ziyaret edildi olarak i√æaretle ve yazd√Ωr
     visited[startNode] = 1;
     printf("%d ", startNode);
 
-    // 2. T¸m dier d¸¸mleri kontrol et
+    // 2. T√ºm di√∞er d√º√∞√ºmleri kontrol et
     for (int i = 0; i < V; i++) {
         
         if (graph[startNode][i] == 1 && !visited[i]) {
@@ -18,7 +18,7 @@ void DFS(int startNode, int visited[], int graph[][V]) {
     }
 }
 
-// ---> CLUSTER BULMA FONKS›YONU <---
+// ---> CLUSTER BULMA FONKS√ùYONU <---
 void findClusters(int graph[][V]) {
     
     int visited[V] = {0}; 
@@ -27,14 +27,14 @@ void findClusters(int graph[][V]) {
     printf("Graph Icerisindeki Kumeler (Clusters):\n");
     printf("--------------------------------------\n");
 
-    // T¸m d¸¸mleri tek tek kontrol et
+    // T√ºm d√º√∞√ºmleri tek tek kontrol et
     for (int i = 0; i < V; i++) {
         
         if (visited[i] == 0) {
             clusterCount++;
             printf("Kume %d: { ", clusterCount);
             
-            // Bu d¸¸me bal˝ her ˛eyi bul ve i˛aretle
+            // Bu d√º√∞√ºme ba√∞l√Ω her √æeyi bul ve i√æaretle
             DFS(i, visited, graph);
             
             printf("}\n");
@@ -62,3 +62,4 @@ int main() {
 
     return 0;
 }
+
