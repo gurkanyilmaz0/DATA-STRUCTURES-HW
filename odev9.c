@@ -3,14 +3,14 @@
 
 #define MAX_Q_SIZE 100 // Kuyruk boyutu
 
-// --- 1. AĞAÇ DÜĞÜM YAPISI ---
+// --- 1. AÃAÃ‡ DÃœÃÃœM YAPISI ----
 struct Node {
     int data;
     struct Node* left;
     struct Node* right;
 };
 
-// Düğüm oluşturma fonksiyonu
+// DÃ¼Ã°Ã¼m oluÃ¾turma fonksiyonu
 struct Node* createNode(int data) {
     struct Node* newNode = (struct Node*)malloc(sizeof(struct Node));
     newNode->data = data;
@@ -19,18 +19,18 @@ struct Node* createNode(int data) {
     return newNode;
 }
 
-// --- 2. PREORDER TRAVERSAL (Kök - Sol - Sağ) ---
-// Rekürsif (Kendi kendini çağıran) yöntem
+// --- 2. PREORDER TRAVERSAL (KÃ¶k - Sol - SaÃ°) ---
+// RekÃ¼rsif (Kendi kendini Ã§aÃ°Ã½ran) yÃ¶ntem
 void printPreorder(struct Node* node) {
     if (node == NULL) return;
 
-    printf("%d ", node->data);     // 1. Önce KÖK
+    printf("%d ", node->data);     // 1. Ã–nce KÃ–K
     printPreorder(node->left);     // 2. Sonra SOL
-    printPreorder(node->right);    // 3. Sonra SAĞ
+    printPreorder(node->right);    // 3. Sonra SAÃ
 }
 
-// --- 3. LEVEL ORDER İÇİN KUYRUK (QUEUE) YAPISI ---
-// Level Order için "sırada bekleyenleri" tutmamız lazım
+// --- 3. LEVEL ORDER ÃÃ‡ÃN KUYRUK (QUEUE) YAPISI ---
+// Level Order iÃ§in "sÃ½rada bekleyenleri" tutmamÃ½z lazÃ½m
 struct Node* queue[MAX_Q_SIZE];
 int front = -1;
 int rear = -1;
@@ -43,30 +43,30 @@ void enqueue(struct Node* node) {
 }
 
 struct Node* dequeue() {
-    if (front == -1 || front > rear) return NULL; // Kuyruk boş
+    if (front == -1 || front > rear) return NULL; // Kuyruk boÃ¾
     struct Node* temp = queue[front];
     front++;
     return temp;
 }
 
 // --- 4. LEVEL ORDER TRAVERSAL (Katman Katman) ---
-// Kuyruk kullanarak yukarıdan aşağı, soldan sağa tarama
+// Kuyruk kullanarak yukarÃ½dan aÃ¾aÃ°Ã½, soldan saÃ°a tarama
 void printLevelOrder(struct Node* root) {
     if (root == NULL) return;
 
-    // Önce kökü kuyruğa at
+    // Ã–nce kÃ¶kÃ¼ kuyruÃ°a at
     enqueue(root);
 
-    while (front <= rear && front != -1) { // Kuyruk boşalana kadar dön
-        // 1. Kuyruğun başındakini çıkar ve yazdır
+    while (front <= rear && front != -1) { // Kuyruk boÃ¾alana kadar dÃ¶n
+        // 1. KuyruÃ°un baÃ¾Ã½ndakini Ã§Ã½kar ve yazdÃ½r
         struct Node* current = dequeue();
         printf("%d ", current->data);
 
-        // 2. Sol çocuğu varsa kuyruğa ekle
+        // 2. Sol Ã§ocuÃ°u varsa kuyruÃ°a ekle
         if (current->left != NULL)
             enqueue(current->left);
 
-        // 3. Sağ çocuğu varsa kuyruğa ekle
+        // 3. SaÃ° Ã§ocuÃ°u varsa kuyruÃ°a ekle
         if (current->right != NULL)
             enqueue(current->right);
     }
@@ -74,7 +74,7 @@ void printLevelOrder(struct Node* root) {
 
 int main() {
     /*
-        Oluşturduğumuz Ağaç Görünümü:
+        OluÃ¾turduÃ°umuz AÃ°aÃ§ GÃ¶rÃ¼nÃ¼mÃ¼:
               1        (Level 0)
             /   \
            2     3     (Level 1)
@@ -100,7 +100,7 @@ int main() {
     printf("\n   (Aciklama: Kokten baslar, hep sola dalar)\n\n");
 
     // Level Order Testi
-    // Kuyruk indekslerini sıfırla (Main içinde tekrar çağırmak gerekirse diye)
+    // Kuyruk indekslerini sÃ½fÃ½rla (Main iÃ§inde tekrar Ã§aÃ°Ã½rmak gerekirse diye)
     front = -1; rear = -1; 
     
     printf("2. Level Order (Breadth First): ");
@@ -109,3 +109,4 @@ int main() {
 
     return 0;
 }
+
