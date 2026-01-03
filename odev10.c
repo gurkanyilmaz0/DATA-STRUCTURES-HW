@@ -15,11 +15,11 @@ struct Node* newNode(int data) {
     return node;
 }
 
-// Array -> Tree Dönüşümü
+// Array -> Tree DÃ¶nÃ¼Ã¾Ã¼mÃ¼
 struct Node* insertLevelOrder(int arr[], int n, int i) {
     struct Node* root = NULL;
 
-    // Sınır kontrolü
+    // SÃ½nÃ½r kontrolÃ¼
     if (i < n) {
         root = newNode(arr[i]);
 
@@ -46,9 +46,10 @@ int main() {
 
     struct Node* root = insertLevelOrder(arr, n, 0);
 
-    printf("InOrder Ciktisi: ");
+    printf("InOrderr Ciktisi: ");
     inOrder(root);
     printf("\n");
 
     return 0;
 }
+
