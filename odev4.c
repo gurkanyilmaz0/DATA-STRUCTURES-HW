@@ -8,14 +8,14 @@ typedef struct {
     int size;
 } MaxHeap;
 
-// Yardýmcý Fonksiyon: Ýki sayýnýn yerini deðiþtir
+// YardÃ½mcÃ½ Fonksiyon: Ãki sayÃ½nÃ½n yerini deÃ°iÃ¾tir
 void swap(int *a, int *b) {
     int temp = *a;
     *a = *b;
     *b = temp;
 }
 
-// ---> 1. HEAPIFY (Aþaðý Doðru Düzenleme) <---
+// ---> 1. HEAPIFY (AÃ¾aÃ°Ã½ DoÃ°ru DÃ¼zenleme) <---
 
 void heapify(MaxHeap *heap, int i) {
     int largest = i;           
@@ -39,19 +39,19 @@ void heapify(MaxHeap *heap, int i) {
     }
 }
 
-// ---> 2. INSERT (Ekleme ve Yukarý Doðru Düzenleme) <---
+// ---> 2. INSERT (Ekleme ve YukarÃ½ DoÃ°ru DÃ¼zenleme) <---
 void insert(MaxHeap *heap, int value) {
     if (heap->size == MAX_SIZE) {
         printf("Hata: Heap dolu!\n");
         return;
     }
 
-    // 1. Elemaný dizinin en sonuna ekle
+    // 1. ElemanÃ½ dizinin en sonuna ekle
     int i = heap->size;
     heap->array[i] = value;
     heap->size++;
 
-    // 2. Yukarý doðru (Bubble Up) düzeltme yap
+    // 2. YukarÃ½ doÃ°ru (Bubble Up) dÃ¼zeltme yap
     
     while (i != 0 && heap->array[(i - 1) / 2] < heap->array[i]) {
         swap(&heap->array[i], &heap->array[(i - 1) / 2]);
@@ -59,7 +59,7 @@ void insert(MaxHeap *heap, int value) {
     }
 }
 
-// ---> 3. EXTRACT MAX (Kökü Silme) <---
+// ---> 3. EXTRACT MAX (KÃ¶kÃ¼ Silme) <---
 int extractMax(MaxHeap *heap) {
     if (heap->size <= 0)
         return -1;
@@ -69,14 +69,14 @@ int extractMax(MaxHeap *heap) {
         return heap->array[0];
     }
 
-    // 1. Kökü (en büyüðü) al
+    // 1. KÃ¶kÃ¼ (en bÃ¼yÃ¼Ã°Ã¼) al
     int root = heap->array[0];
 
-    // 2. En son elemaný köke taþý
+    // 2. En son elemanÃ½ kÃ¶ke taÃ¾Ã½
     heap->array[0] = heap->array[heap->size - 1];
     heap->size--;
 
-    // 3. Yeni kökü aþaðý doðru (Bubble Down) düzelt
+    // 3. Yeni kÃ¶kÃ¼ aÃ¾aÃ°Ã½ doÃ°ru (Bubble Down) dÃ¼zelt
     heapify(heap, 0);
 
     return root;
@@ -106,7 +106,7 @@ int main() {
     
     printHeap(&heap);
 
-    // En büyüðü çekme
+    // En bÃ¼yÃ¼Ã°Ã¼ Ã§ekme
     printf("Silinen (Max): %d\n", extractMax(&heap));
     printHeap(&heap);
 
