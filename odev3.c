@@ -1,16 +1,16 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <ctype.h> // Harf/Rakam kontrolü için (isalnum)
+#include <ctype.h> // Harf/Rakam kontrolÃ¼ iÃ§in (isalnum)
 #include <string.h>
 
 #define MAX 100
 
-// --- STACK (YIÐIN) YAPISI ---
+// --- STACK (YIÄžIN) YAPISI ---
 // C dilinde hazir Stack olmadigi icin kendimiz basitce tanimliyoruz
 char stack[MAX];
 int top = -1;
 
-// Stack'e eleman ekleme
+// Stack'e eleman ekleme //
 void push(char x) {
     if (top >= MAX - 1) {
         printf("Stack dolu!\n");
@@ -19,7 +19,7 @@ void push(char x) {
     }
 }
 
-// Stack'ten eleman çýkarma
+// Stack'ten eleman Ã§Ä±karma
 char pop() {
     if (top == -1) {
         return -1;
@@ -34,8 +34,8 @@ char peek() {
     return stack[top];
 }
 
-// --- ÖNCELÝK KONTROLÜ (Precedence) ---
-// Ýþlem önceliði: * ve / (2 puan), + ve - (1 puan)
+// --- Ã–NCELÄ°K KONTROLÃœ (Precedence) ---
+// Ä°ÅŸlem Ã¶nceliÄŸi: * ve / (2 puan), + ve - (1 puan)
 int precedence(char x) {
     if (x == '(') return 0;
     if (x == '+' || x == '-') return 1;
@@ -43,34 +43,34 @@ int precedence(char x) {
     return 0;
 }
 
-// --- SHUNTING YARD ALGORÝTMASI ---
+// --- SHUNTING YARD ALGORÄ°TMASI ---
 void infixToPostfix(char* exp) {
     printf("Infix Ifade: %s\n", exp);
     printf("Postfix Sonuc: ");
     
     char *e;
     
-    // String'in baþýndan sonuna kadar tek tek geziyoruz
+    // String'in baÅŸÄ±ndan sonuna kadar tek tek geziyoruz
     for (e = exp; *e != '\0'; e++) {
         
-        // 1. Eðer gelen karakter bir harf veya rakamsa direkt yazdýr
+        // 1. EÄŸer gelen karakter bir harf veya rakamsa direkt yazdÄ±r
         if (isalnum(*e)) {
             printf("%c", *e);
         }
-        // 2. Eðer '(' geldiyse stack'e at
+        // 2. EÄŸer '(' geldiyse stack'e at
         else if (*e == '(') {
             push(*e);
         }
-        // 3. Eðer ')' geldiyse, '(' görene kadar stack'tekileri boþalt ve yazdýr
+        // 3. EÄŸer ')' geldiyse, '(' gÃ¶rene kadar stack'tekileri boÅŸalt ve yazdÄ±r
         else if (*e == ')') {
             while (top != -1 && peek() != '(') {
                 printf("%c", pop());
             }
-            pop(); // '(' iþaretini de stackten at ama yazdýrma
+            pop(); // '(' iÅŸaretini de stackten at ama yazdÄ±rma
         }
-        // 4. Eðer bir iþlem operatörü (+ - * /) geldiyse
+        // 4. EÄŸer bir iÅŸlem operatÃ¶rÃ¼ (+ - * /) geldiyse
         else {
-            // Stack'teki operatörün önceliði benimkinden büyükse, onu çýkar ve yazdýr
+            // Stack'teki operatÃ¶rÃ¼n Ã¶nceliÄŸi benimkinden bÃ¼yÃ¼kse, onu Ã§Ä±kar ve yazdÄ±r
             while (top != -1 && precedence(peek()) >= precedence(*e)) {
                 printf("%c", pop());
             }
@@ -79,7 +79,7 @@ void infixToPostfix(char* exp) {
         }
     }
     
-    // Döngü bitti, Stack'te kalanlarý sýrayla çýkar ve yazdýr
+    // DÃ¶ngÃ¼ bitti, Stack'te kalanlarÄ± sÄ±rayla Ã§Ä±kar ve yazdÄ±r
     while (top != -1) {
         printf("%c", pop());
     }
@@ -98,3 +98,4 @@ int main() {
 
     return 0;
 }
+
