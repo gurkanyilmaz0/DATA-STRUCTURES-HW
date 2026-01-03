@@ -8,7 +8,7 @@ struct Node {
     struct Node* prev;
 };
 
-// 1. TRAVERSAL (Gezinme ve Yazd˝rma)
+// 1. TRAVERSAL (Gezinme ve Yazd√Ωrma)//
 void printList(struct Node* node) {
     printf("Liste: ");
     while (node != NULL) {
@@ -18,7 +18,7 @@ void printList(struct Node* node) {
     printf("\n");
 }
 
-// 2. ARAYA EKLEME (Verilen d¸¸mden sonras˝na ekler)
+// 2. ARAYA EKLEME (Verilen d√º√∞√ºmden sonras√Ωna ekler)
 void insertAfter(struct Node* prev_node, int new_data) {
     if (prev_node == NULL) {
         printf("Hata: Onceki dugum NULL olamaz.\n");
@@ -28,31 +28,31 @@ void insertAfter(struct Node* prev_node, int new_data) {
     struct Node* new_node = (struct Node*)malloc(sizeof(struct Node));
     new_node->data = new_data;
 
-    // Balant˝lar˝ ayarla
+    // Ba√∞lant√Ωlar√Ω ayarla
     new_node->next = prev_node->next;
     prev_node->next = new_node;
     new_node->prev = prev_node;
 
-    // Eer yeni d¸¸mden sonra eleman varsa, onun 'prev'ini g¸ncelle
+    // E√∞er yeni d√º√∞√ºmden sonra eleman varsa, onun 'prev'ini g√ºncelle
     if (new_node->next != NULL) {
         new_node->next->prev = new_node;
     }
 }
 
-// 3. S›LME (Adresi verilen d¸¸m¸ siler)
+// 3. S√ùLME (Adresi verilen d√º√∞√ºm√º siler)
 void deleteNode(struct Node** head_ref, struct Node* del) {
     if (*head_ref == NULL || del == NULL)
         return;
 
-    // Silinecek d¸¸m ba˛ (head) ise
+    // Silinecek d√º√∞√ºm ba√æ (head) ise
     if (*head_ref == del)
         *head_ref = del->next;
 
-    // Silinecek d¸¸m son deilse
+    // Silinecek d√º√∞√ºm son de√∞ilse
     if (del->next != NULL)
         del->next->prev = del->prev;
 
-    // Silinecek d¸¸m ilk deilse
+    // Silinecek d√º√∞√ºm ilk de√∞ilse
     if (del->prev != NULL)
         del->prev->next = del->next;
 
@@ -60,7 +60,7 @@ void deleteNode(struct Node** head_ref, struct Node* del) {
 }
 
 int main() {
-    // ---> L›STEY› OLUﬁTURMA (Manuel) <---
+    // ---> L√ùSTEY√ù OLU√ûTURMA (Manuel) <---
     
     struct Node* head = (struct Node*)malloc(sizeof(struct Node));
     head->data = 10;
@@ -73,7 +73,7 @@ int main() {
     printf("Olusturulan ");
     printList(head); 
 
-    // ---> S›LME TEST› <---
+    // ---> S√ùLME TEST√ù <---
     
     deleteNode(&head, head->next);
 
@@ -82,3 +82,4 @@ int main() {
 
     return 0;
 }
+
